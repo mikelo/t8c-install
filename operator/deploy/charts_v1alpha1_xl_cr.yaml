@@ -1,0 +1,152 @@
+---
+apiVersion: charts.helm.k8s.io/v1
+kind: Xl
+metadata:
+  name: xl-release
+spec:
+  # This configuration file is used for production.
+  # Default values copied from <project_dir>/helm-charts/xl/values.yaml
+
+  # Default values for xl.
+  # This is a YAML-formatted file.
+  # Declare variables to be passed into your templates.
+
+  # Any changes run : kubectl apply -f deploy/crds/charts_v1alpha1_xl_cr.yaml -n turbonomic
+  # Global settings
+  nginx:
+    nginxIsPrimaryIngress: false
+    httpsRedirect: false
+  nginxingress:
+    enabled: true
+  openshiftingress:
+    enabled: true
+  db:
+    persistence:
+      size: 100Gi
+  global:
+    # externalDBName: mariadb-maria.apps.kluster.cp.fyre.ibm.com
+    # externalDbPort: 80
+
+  #  registry: docker.io
+  #  imageUsername: turbouser
+  #  imagePassword: turbopassword
+    # externalIP: 10.0.2.15
+    # externalDbIP: 10.0.2.15
+    # externalTimescaleDBIP: 10.0.2.15
+    # enableExternalSecrets: false
+    repository: icr.io/cpopen/turbonomic
+    tag: 8.14.0
+    securityContext:
+      fsGroup: 1000730000 #oc get ns turbonomic -o yaml|grep uid-range
+    resources:
+      requests:
+        memory: 16Gi
+  # properties:
+  #   global:
+      # enableSecureDBConnection: false
+      # # dbPort: 80
+      # dbRootPassword: turbo
+      # dbRootUsername: root
+# https://www.ibm.com/docs/en/tarm/8.12.3?topic=database-configuring-external-mariadb
+  grafana:
+    # Grafana is disabled by default. To enable it, uncomment:
+    enabled: false
+    adminPassword: admin
+    grafana.ini:
+      database:
+        # Store data in sqlite3 (no persistence across restarts) by default.
+        # To persist, uncomment:
+        type: postgres
+        password: grafana
+    
+
+  # Component selector - Probes
+  actionscript:
+    enabled: false
+  actionstream-kafka:
+    enabled: false
+  appdynamics:
+    enabled: false
+  appinsights:
+    enabled: false
+  aws:
+    enabled: false
+  azure:
+    enabled: false
+  dynatrace:
+    enabled: false
+  gcp:
+    enabled: true
+  hpe3par:
+    enabled: false
+  horizon:
+    enabled: false
+  hyperflex:
+    enabled: false
+  hyperv:
+    enabled: false
+  ibmstorage-flashsystem:
+    enabled: false
+  kubeturbo:
+    enabled: false
+  netapp:
+    enabled: false
+  nutanix:
+    enabled: false
+  oneview:
+    enabled: false
+  prometheus-mysql-exporter:
+    enabled: false
+    mysql:
+      user: root
+      pass: vmturbo
+  prometheus:
+    enabled: false
+  prometurbo:
+    enabled: false
+  pure:
+    enabled: true
+  scaleio:
+    enabled: false
+  servicenow:
+    enabled: false
+  ucs:
+    enabled: false
+  vcenter:
+    enabled: true
+  vmax:
+    enabled: false
+  vmm:
+    enabled: false
+  wmi:
+    enabled: false
+  snmp:
+    enabled: false
+  mssql:
+    enabled: false
+  mysql:
+    enabled: false
+  oracle:
+    enabled: false
+  tomcat:
+    enabled: false
+  jvm:
+    enabled: false
+  newrelic:
+    enabled: false
+  udt:
+    enabled: false
+  websphere:
+    enabled: false
+  weblogic:
+    enabled: false
+  xen:
+    enabled: false
+  instana:
+    enabled: true
+  jboss:
+    enabled: false
+  datadog:
+    enabled: false
+  powervm:
+    enabled: false
