@@ -1,3 +1,4 @@
+# oc policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n turbonomic
 ---
 apiVersion: charts.helm.k8s.io/v1
 kind: Xl
