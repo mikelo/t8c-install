@@ -3,16 +3,16 @@ kind: OperatorGroup
 metadata:
   # generateName: turbonomic-
   name: turbonomic
-  namespace: {NAMESPACE}
+  namespace: ${ARGOCD_APP_NAMESPACE}
 spec:
   targetNamespaces:
-  - {NAMESPACE}
+  - ${ARGOCD_APP_NAMESPACE}
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: t8c-certified
-  namespace: {NAMESPACE} 
+  namespace: ${ARGOCD_APP_NAMESPACE} 
 spec:
   channel: stable
   name: t8c-certified
