@@ -36,7 +36,7 @@ spec:
     # externalTimescaleDBIP: 10.0.2.15
     # enableExternalSecrets: false
     repository: icr.io/cpopen/turbonomic
-    tag: 8.14.0
+    tag: 8.16.0
     securityContext:
       fsGroup: 1000730000 #oc get ns turbonomic -o yaml|grep uid-range
     resources:

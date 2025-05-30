@@ -14,7 +14,10 @@ spec:
         - patch: |-
             - op: replace
               path: /spec/targetNamespaces
-              value: "- turbo"
+              value: ["turbonomic"]
+            - op: replace
+              path: /spec/global/securityContext/fsGroup
+              value: 1000730000
           target:
             kind: OperatorGroup
             name: turbonomic
