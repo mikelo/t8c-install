@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: turbonomic
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mikelo/t8c-install
+    path: operator/deploy/argocd/resources/
+    targetRevision: argocd
+    kustomize:
+      patches:
+        - patch: |-
+            - op: replace
+              path: /spec/targetNamespaces
+              value: "- turbo"
+          target:
+            kind: OperatorGroup
+            name: turbonomic
+  destination:
+    namespace: turbonomic
+    name: in-cluster
+
