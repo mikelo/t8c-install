@@ -21,4 +21,8 @@ spec:
   destination:
     namespace: turbonomic
     name: in-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 
