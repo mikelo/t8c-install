@@ -23,7 +23,7 @@ spec:
               path: /spec/global/securityContext/fsGroup
               value: 1000730000
             - op: replace
-              path: /spec/global/securityContext/tag
+              path: /spec/global/tag
               value: 8.16.0              
           target:
             kind: Xl
