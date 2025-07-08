@@ -14,22 +14,22 @@ spec:
         - patch: |-
             - op: replace
               path: /spec/targetNamespaces
-              value: ["turbonomic"]
+              value: ["turbo2"]
           target:
             kind: OperatorGroup
             name: turbonomic
         - patch: |-
             - op: replace
               path: /spec/global/securityContext/fsGroup
-              value: 1000730000
+              value: 1000890000
             - op: replace
               path: /spec/global/tag
-              value: 8.16.0              
+              value: 8.16.0           
           target:
             kind: Xl
             name: xl-release              
   destination:
-    namespace: turbonomic
+    namespace: turbo2
     name: in-cluster
   syncPolicy:
     automated:
