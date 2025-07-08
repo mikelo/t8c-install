@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mikelo/t8c-install
     path: operator/deploy/argocd/resources/
-    targetRevision: argocd
+    targetRevision: test2
     kustomize:
       patches:
         - patch: |-
