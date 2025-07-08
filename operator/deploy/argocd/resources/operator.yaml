@@ -2,6 +2,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: t8c-operator
+  namespace: openshift-gitops-operator
 subjects:
 - kind: ServiceAccount
   name: t8c-operator
@@ -14,6 +15,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: t8c-operator
+  namespace: openshift-gitops-operator
 rules:
 - apiGroups:
   - ""
@@ -128,7 +130,7 @@ kind: OperatorGroup
 metadata:
   # generateName: turbonomic-
   name: turbonomic
-  # namespace: ${ARGOCD_APP_NAMESPACE}
+  # namespace: openshift-gitops-operator
 spec:
   targetNamespaces:
   - turbonomic
@@ -137,7 +139,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: t8c-certified
-  # namespace: ${ARGOCD_APP_NAMESPACE} 
+  # namespace: openshift-gitops-operator 
 spec:
   channel: stable
   name: t8c-certified
